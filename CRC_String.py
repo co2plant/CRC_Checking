@@ -1,4 +1,5 @@
 import sys
+from appscript import its
 import numpy as np
 
 class CRC_String():
@@ -31,7 +32,15 @@ class CRC_String():
 
     #this function is simple code for main
     def changeTotal(self, inputCode):
-        result = str(bin(inputCode))[2:]
+        if(int(inputCode, 16) == 0):
+            result = np.zeros(len(inputCode)*4).astype('int')
+            
+        else:
+            inputCode = int(inputCode, 16)
+
+            print(inputCode)
+            result = str(bin(inputCode))[2:]
+
         result = np.array(list(result))
         resultsize = result.size
         result = result.astype('bool')
