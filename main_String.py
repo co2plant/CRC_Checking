@@ -17,9 +17,9 @@ from CRC_String import CRC_String
 # Binary Code of Divisor, Packet, Initial, Temp, Result
 
 #----------------------------Initialize Field
-DivisorCode=0x04C11DB7
-PacketCode=0x705dcce4a1c800e04c362a9f08004500002cb26200004001ebb8c0a81a0c0101010108007e7264b7000012cfb5deee1d4d72821135d058700046
-initialCode=0xFFFFFFFF
+DivisorCode=0x1DB7
+PacketCode=0x474a18ac412905b4a18ce2718915fdf7
+initialCode=0x0000
 #--------------------------------------------
 
 modules = CRC_String()
@@ -46,7 +46,7 @@ print(inputPacket[packetSize:])
 print("-----")
 
 tmpresult = ''.join(result.astype('int').astype('str'))
-with open('./log.csv', 'w', newline='') as csvfile:
+with open('./CRC_Checking/log.csv', 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(['PACKET', 'DIVISOR', 'INITIAL', 'CRC'])
     csvwriter.writerow([''.join(tmpPacket.astype('int').astype('str')), ''.join(tmpDivisor.astype('int').astype('str')), ''.join(tmpInitial.astype('int').astype('str')), ''.join(result.astype('int').astype('str'))])
@@ -70,7 +70,7 @@ print(inputPacket[packetSize:])
 result = inputPacket[packetSize:]
 print(tmpInitial)
 
-with open('./log.csv', 'a', newline='') as csvfile:
+with open('./CRC_Checking/log.csv', 'a', newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow([''.join(tmpPacket.astype('int').astype('str')), ''.join(tmpDivisor.astype('int').astype('str')), ''.join(tmpInitial.astype('int').astype('str')), ''.join(result.astype('int').astype('str'))])
 
